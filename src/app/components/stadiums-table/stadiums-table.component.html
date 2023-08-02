@@ -1,0 +1,21 @@
+
+ <table class="table">
+<tr>
+<th>Id</th>
+<th>name</th>
+<th>capacité</th>
+<th>country</th>
+<th>Actions</th>
+</tr>
+<tr *ngFor="let s of stadiums">
+  <td>{{s.id}}</td>
+  <td>{{s.name}}</td>
+  <td>{{s.capacite}}</td>
+  <td>{{s.country}}</td>
+  <td>
+    <button (click)="delete(s.id)" class="btn btn-danger">Delete</button>
+    <button (click)="goToInfo(s.id)" class="btn btn-warning">Display</button>
+  </td>
+</tr>
+
+ </table>

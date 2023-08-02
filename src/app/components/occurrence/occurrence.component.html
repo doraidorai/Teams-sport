@@ -1,0 +1,36 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_x.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+               <!-- <h1 class="text-white">Occurence</h1>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form [formGroup]="occForm">
+                    <div class="form-group" *ngIf="occForm.controls['ch'].invalid && (occForm.controls['ch'].touched)">
+                        <div *ngIf="occForm.controls['ch'].errors.required" style="font-size: small;color: red;">Word is Required*</div>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="ch" type="text" class="form-control" placeholder="Enter your word">
+                    </div>
+                   
+                 
+                    <div class="form-group">
+                        <input (click)="display()" type="submit" class="btn btn-primary py-3 px-5" value="Display Nbr of Occurrence">
+                    </div>
+                    <div id="displayDiv"></div>
+                </form>
+            </div>
+           
+        </div>
+        <div *ngFor="let r of result"></div>
+        <p>{{r}}</p>
+    </div>
+</div>

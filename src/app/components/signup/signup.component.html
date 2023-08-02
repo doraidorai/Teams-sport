@@ -1,0 +1,75 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Signup</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form [formGroup]="signupForm">
+                    <div class="form-group">
+                        <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty)">
+                        <div *ngIf="signupForm.controls['firstName'].errors.required">First name is Required</div>
+                        <div *ngIf="signupForm.controls['firstName'].errors.minlength">first name >= 3</div>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                    
+                    <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].touched || signupForm.controls['lastName'].dirty)">
+                        <div *ngIf="signupForm.controls['lastName'].errors.required">LN Required</div>
+                        <div *ngIf="signupForm.controls['lastName'].errors.minlength"> at least 5 characters</div>
+                    </div>
+
+                    <div class="form-group">
+                        <input  formControlName="email" type="text" class="form-control" placeholder="Email">
+                    </div>
+
+                    <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].touched || signupForm.controls['email'].dirty)">
+                        <div *ngIf="signupForm.controls['email'].errors.required">email is Required</div>
+                        <div *ngIf="signupForm.controls['email'].errors.email">invalid email foramt</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input formControlName="pwd" type="password" class="form-control" placeholder="Password">
+                    </div>
+
+                    <div *ngIf="signupForm.controls['pwd'].invalid && (signupForm.controls['pwd'].touched || signupForm.controls['pwd'].dirty)">
+                        <div *ngIf="signupForm.controls['pwd'].errors.required">Password is Required</div>
+                        <div *ngIf="signupForm.controls['pwd'].errors.minlength">password shoud be >5</div>
+                        <div *ngIf="signupForm.controls['pwd'].errors.maxlength">password shoud btw 5 and 10 ch.</div>
+                        <div *ngIf="signupForm.controls['pwd'].errors.pattern">password shoud need Special ch.</div>
+                    </div>
+
+                    <div class="form-group" style="visibility: hidden;">
+                        <input type="file" class="form-control" #filePicker (change)="onImageSelected($event)">
+                        </div>
+                        <div class="text-center">
+                        <button class="btn btn-warning" (click)="filePicker.click()">
+                        Please select your avatar
+                        </button>
+                        </div>
+                        <div class="text-center  mb-5">
+                        <img [src]="imagePreview" alt="" width="200px">
+                        </div>
+                        
+                   
+                    <div class="form-group text-center"  >
+                        <input (click)="signup()" [disabled]="signupForm.invalid" type="submit" class="btn btn-primary py-3 px-5" value="Signup">
+                    </div>
+                    <span style="color: red;">{{errorMsg}}</span>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>

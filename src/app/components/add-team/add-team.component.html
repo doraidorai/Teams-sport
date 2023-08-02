@@ -1,0 +1,46 @@
+<div class="hero overlay" style="background-image: url('assets/images/bg_3.jpg');">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-9 mx-auto text-center">
+                <h1 class="text-white">Add team</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form #addTeamForm="ngForm" (ngSubmit)="addTeam()">
+                    <div class="form-group">
+                        <input [(ngModel)]="obj.name" name="name" type="text" #name="ngModel" required  class="form-control" placeholder="name">
+                        <div *ngIf="addTeamForm.submitted && name.invalid" class="invalidfeedback"></div>
+                        <!-- <div *ngIf="name.errors.required">name is required</div> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="text"#owner="ngModel" required [(ngModel)]="obj.owner" name="owner" class="form-control" placeholder="owner">
+                        <div *ngIf="addTeamForm.submitted && owner.invalid" class="invalidfeedback"></div>
+                        <!-- <div *ngIf="owner.errors.required">owner is required</div> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="text" [(ngModel)]="obj.foundation" name="foundation" class="form-control" placeholder="foundation">
+                    </div>
+                    <div class="form-group">
+                        <select [(ngModel)]="obj.stadiumId" name="stadiumId">
+                            <option [value]="s.id" *ngFor="let s of stadiums">{{s.name}}</option>
+                            
+                        </select>
+                    </div>
+                   
+                   
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary py-3 px-5" value="AddTeam">
+                    </div>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
